@@ -22,14 +22,18 @@ export default class App extends Component<Props> {
     placeName: ""
   };
 
-  onPlaceNameChange = e => {
-    alert(e);
+  onPlaceNameChange = val => {
+    this.setState({ placeName: val });
   };
 
   render() {
     return (
       <View style={styles.container}>
-        <TextInput value={placeName} onCnage={onPlaceNameChange} />
+        <TextInput
+          style={{ width: 300, borderColor: "black", borderWidth: 1 }}
+          value={this.state.placeName}
+          onChangeText={this.onPlaceNameChange}
+        />
       </View>
     );
   }

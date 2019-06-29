@@ -30,7 +30,8 @@ export default class App extends Component<Props> {
     return (
       <View style={styles.container}>
         <TextInput
-          style={{ width: 300, borderColor: "black", borderWidth: 1 }}
+          style={{ width: 300 }}
+          placeholder="An awesome place"
           value={this.state.placeName}
           onChangeText={this.onPlaceNameChange}
         />
@@ -42,18 +43,9 @@ export default class App extends Component<Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
+    padding: 20,
+    justifyContent: "flex-start",
     alignItems: "center",
     backgroundColor: "#F5FCFF"
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: "center",
-    margin: 10
-  },
-  instructions: {
-    textAlign: "center",
-    color: "#333333",
-    marginBottom: 5
   }
 });

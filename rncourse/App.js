@@ -1,40 +1,40 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import React, { Component } from "react";
-import { Platform, StyleSheet, TextInput, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
-const instructions = Platform.select({
-  ios: "Press Cmd+R to reload,\n" + "Cmd+D or shake for dev menu",
-  android:
-    "Double tap R on your keyboard to reload,\n" +
-    "Shake or press menu button for dev menu"
-});
+import PlacesInput from "./src/components/PlacesInput/PlacesInput";
+import PlacesList from "./src/components/PlacesList/PlacesList";
 
-type Props = {};
-export default class App extends Component<Props> {
+export default class App extends Component {
   state = {
-    placeName: ""
+    placeName: "",
+    places: []
   };
 
   onPlaceNameChange = val => {
     this.setState({ placeName: val });
   };
 
+  placeSubmitHandler = () => {
+    if (this.state.placeName.trim() === "") {
+      return;
+    }
+
+    this.setState(prevState => {
+      return {
+        places: prevState.places.concat(prevState.placeName)
+      };
+    });
+  };
+
   render() {
     return (
       <View style={styles.container}>
-        <TextInput
-          style={{ width: 300 }}
-          placeholder="An awesome place"
-          value={this.state.placeName}
-          onChangeText={this.onPlaceNameChange}
+        <PlacesInput
+          onPlaceNameChange={this.onPlaceNameChange}
+          placeSubmitHandler={this.placeSubmitHandler}
+          placeName={this.state.placeName}
         />
+        <PlacesList places={this.state.places} />
       </View>
     );
   }

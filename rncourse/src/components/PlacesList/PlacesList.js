@@ -4,9 +4,9 @@ import { View, StyleSheet } from "react-native";
 import ListItem from "../ListItem/ListItem";
 
 const PlacesList = props => {
-  const placesOutput = props.places.map((place, i) => (
-    <ListItem key={i}>{place}</ListItem>
-  ));
+  const placesOutput = props.places.map((place, i) => {
+    return <ListItem key={i} placeName={place} />;
+  });
 
   return <View style={styles.listContainer}>{placesOutput}</View>;
 };

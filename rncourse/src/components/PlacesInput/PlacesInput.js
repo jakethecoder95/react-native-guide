@@ -6,13 +6,13 @@ const PlacesInput = props => (
     <TextInput
       style={styles.placeInput}
       placeholder="An Awesome Place"
-      onChange={val => props.onPlaceNameChange(val)}
+      onChangeText={val => props.onPlaceNameChange(val)}
       value={props.placeName}
     />
     <Button
       title="Add"
       style={styles.placeButton}
-      onPush={props.placesSubmitHandler}
+      onPush={props.placeSubmitHandler}
     />
   </View>
 );

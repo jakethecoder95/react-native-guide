@@ -17,6 +17,14 @@ export default class App extends Component {
     });
   };
 
+  placeDeletedHandler = index => {
+    this.setState(prevState => {
+      return {
+        places: prevState.places.filter((el, i) => i !== index)
+      };
+    });
+  };
+
   render() {
     return (
       <View style={styles.container}>
@@ -25,7 +33,10 @@ export default class App extends Component {
           onPlaceAdded={this.placeAddedHandler}
           placeName={this.state.placeName}
         />
-        <PlacesList places={this.state.places} />
+        <PlacesList
+          places={this.state.places}
+          onItemDeleted={this.placeDeletedHandler}
+        />
       </View>
     );
   }

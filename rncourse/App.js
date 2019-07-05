@@ -3,6 +3,7 @@ import { StyleSheet, View } from "react-native";
 
 import PlacesInput from "./src/components/PlacesInput/PlacesInput";
 import PlacesList from "./src/components/PlacesList/PlacesList";
+import placeImage from "./src/assets/wild-west.png";
 
 export default class App extends Component {
   state = {
@@ -12,15 +13,19 @@ export default class App extends Component {
   placeAddedHandler = val => {
     this.setState(prevState => {
       return {
-        places: prevState.places.concat(val)
+        places: prevState.places.concat({
+          name: val,
+          key: Math.random(),
+          image: placeImage
+        })
       };
     });
   };
 
-  placeDeletedHandler = index => {
+  placeDeletedHandler = key => {
     this.setState(prevState => {
       return {
-        places: prevState.places.filter((el, i) => i !== index)
+        places: prevState.places.filter(place => place.key !== key)
       };
     });
   };
